@@ -96,7 +96,7 @@
 
 .cell {
 	width: 16%;
-	border: solid #ffffff 1px;
+	border: solid #ffffff 2px;
 	display: block;
 	float: left;
 	min-height: 20px;
@@ -164,7 +164,7 @@ ul li{
 
 </head>
 
-<body onload="FocusOnInput()">
+<body onLoad="FocusOnInput()">
 
 <div id='password_strength_panel'>
 <h2>Fonterra Security Password Checker</h2>
@@ -173,8 +173,8 @@ ul li{
 <ul>
 <!-- <li> <input type='text' id='passwordInput' /> </li> -->
 
-<!-- this is the password input box -->
-	<li> <input style='height:50px;font-family:Lato;font-size:30px;text-align:center;margin:auto;width:100%;' id='pass' type='text' size='53px'/> </li>
+<!-- this is the password input box, change the type to text to use normal text -->
+	<li> <input style='height:50px;font-family:Lato;font-size:30px;text-align:center;margin:auto;width:100%;' id='pass' type='password' size='53px'/> </li>
 	
 <li> <div id='pass_meter'> </div> 
 </li>
