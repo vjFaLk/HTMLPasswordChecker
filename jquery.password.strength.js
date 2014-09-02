@@ -53,19 +53,22 @@
 
              else if(errors == 0){
                 var strength =  '';
+				
                 strength = zxcvbn(this.settings.password, this.settings.blackList);
+				var crackTime = String(strength.crack_time_display);
 				
 				console.log(strength);
 				
                 switch(strength.score){
                     case 0:
+					
 						switchOnCell(0);
 						switchOffCell(1);
 						switchOffCell(2);
 						switchOffCell(3);
 						switchOffCell(4);
 						switchOffCell(5);
-                        this.info = 'Unacceptable password quality';
+                        this.info = 'Unacceptable password quality, would take an '+crackTime+' to crack';
                         break;
                     case 1:
 						switchOnCell(0);
@@ -74,7 +77,7 @@
 						switchOffCell(3);
 						switchOffCell(4);
 						switchOffCell(5);
-                        this.info = 'Very weak - password can be cracked in seconds';
+                        this.info = 'Very weak - password can be cracked in '+crackTime;
                         break;
                     case 2:
 						switchOnCell(0);
@@ -83,7 +86,7 @@
 						switchOffCell(3);
 						switchOffCell(4);
 						switchOffCell(5);
-                        this.info = 'Weak - password can be cracked in minutes';
+                        this.info = 'Weak - password can be cracked in '+crackTime;
                         break;
                     case 3:
 						switchOnCell(0);
@@ -92,15 +95,14 @@
 						switchOnCell(3);
 						switchOffCell(4);
 						switchOffCell(5);
-                        this.info = 'Compliant - password is adequate but can be cracked over time - consider making it stronger';
+                        this.info = 'Compliant - password is adequate but can be cracked in '+crackTime+' consider making it stronger';
                         break;
                     case 4:
 
-                        if(this.settings.advancedStrength){
-                            var crackTime = String(strength.crack_time_display);
+                        if(this.settings.advancedStrength){                           
 
                             if (crackTime.indexOf("years") !=-1) {
-                                this.info = 'Strong - password would take years to crack';
+                                this.info = 'Strong - password would take '+crackTime+' to crack';
 								switchOnCell(0);
 								switchOnCell(1);
 								switchOnCell(2);
@@ -108,7 +110,7 @@
 								switchOnCell(4);
 								switchOffCell(5);
                             }else if(crackTime.indexOf("centuries") !=-1){
-                                this.info = 'Very Strong - password would take centuries to crack';
+                                this.info = 'Very Strong - password would take '+crackTime+' to crack'
 								switchOnCell(0);
 								switchOnCell(1);
 								switchOnCell(2);
